@@ -3,6 +3,7 @@
   "displayName": "pang",
   "description": "The Pang programming language.",
   "icon": "./pang.png",
+  "publisher": "xihtyM",
   "main": "./main.js",
   "repository": {"url": "github.com/xihtyM/pang"},
   "version": "3.0.0",
@@ -24,5 +25,8 @@
       "scopeName": "source.pang",
       "path": "./syntaxes/pang.tmLanguage.json"
     }]
-  }
+  },
+  "activationEvents": [
+    "onLanguage:pang"
+  ]
 }
