@@ -24,7 +24,10 @@
 			"include": "#operators"
 		},
 		{
-			"include": "#identifiers"
+			"include": "#macro_identifiers"
+		},
+		{
+			"include": "#calls"
 		},
 		{
 			"include": "#numbers"
@@ -34,26 +37,35 @@
 		"block-comments": {
 			"patterns": [{
 				"name": "comment.block",
-				"begin": "\\s*+(\\/\\*)",
-				"end": "\\*\\/"
+				"begin": "/\\*",
+				"end": "\\*/",
+				"patterns": [{
+					"match": "TODO:",
+					"name": "keyword.control"
+				}]
 			}]
 		},
 		"comments": {
 			"patterns": [{
 				"name": "comment.line",
-				"match": "(//.*\n)"
+				"begin": "(//)",
+				"end": "\n",
+				"patterns": [{
+					"match": "TODO:",
+					"name": "keyword.control"
+				}]
 			}]
 		},
 		"operators": {
 			"patterns": [{
 				"name": "keyword.operator",
-				"match": "\\b(if|add|sub|mul|dup|swap|buf|back|while|front|divmod|syscall|lshift|rshift|xor|bor|bnot|band)\\b"
+				"match": "\\b(if|drop|quote|apply|add|sub|mul|dup|swap|while|div|mod|call|lshift|rshift|xor|bor|bnot|band)\\b"
 			}]
 		},
 		"keywords": {
 			"patterns": [{
 				"name": "support.function",
-				"match": "\\b(include|do|end|macro)\\b"
+				"match": "\\b(include|end|macro)\\b"
 			}]
 		},
 		"chars": {
@@ -85,10 +97,16 @@
 				"match": "\\b(0[xX][0-9a-fA-F]+|[0-9][0-9]*)\\b"
 			}]
 		},
-		"identifiers": {
+		"macro_identifiers": {
 			"patterns": [{
 				"name": "entity.name.function",
-				"match": "([_a-zA-Z][_a-zA-Z0-9]*)"
+				"match": "(?<=(macro\\s+))([_A-Za-z])([_A-Za-z0-9]*)"
+			}]
+		},
+		"calls": {
+			"patterns": [{
+				"name": "storage.type",
+				"match": "(?<=(call\\s+))([_A-Za-z])([_A-Za-z0-9]*)"
 			}]
 		}
 	},

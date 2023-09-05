@@ -2,7 +2,10 @@
   "name": "pang",
   "displayName": "pang",
   "description": "The Pang programming language.",
-  "version": "0.0.1",
+  "icon": "./pang.png",
+  "main": "./main.js",
+  "repository": {"url": "github.com/xihtyM/pang"},
+  "version": "3.0.0",
   "engines": {
     "vscode": "^1.73.0"
   },
